@@ -23,5 +23,23 @@ echo "<br>". strftime('%A, %d de %B de %Y', strtotime('today'));
 $data = date("I");
 //VERIFICA O RESULTADO
 echo "<br>". $data ? " Horário de Verão" : " Horário Normal";
+
+
+//idade
+echo "<br>Idade: ";
+$data = '09/12/1990';
+
+// Separa em dia, mês e ano
+list($dia, $mes, $ano) = explode('/', $data);
+
+// Descobre que dia é hoje e retorna a unix timestamp
+$hoje = mktime(0, 0, 0, date('m'), date('d'), date('Y'));
+// Descobre a unix timestamp da data de nascimento
+$nascimento = mktime( 0, 0, 0, $mes, $dia, $ano);
+
+$idade = floor((((($hoje - $nascimento) / 60) / 60) / 24) / 365.25);
+print $idade;
+
+
 ?>
 
