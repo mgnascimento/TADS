@@ -9,7 +9,7 @@
 //ini_set('display_errors', 0);
 
 try {
-    $pdo = new PDO('mysql:host=localhost;dbname=SGA', 'root', 'root');
+    $pdo = new PDO('mysql:host=localhost;dbname=sga', 'root', 'root');
     $pdo->exec("set names utf8");
 } catch ( PDOException $e ) {
     echo 'Erro ao conectar com o Banco: ' . $e->getMessage();

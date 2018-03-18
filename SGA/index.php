@@ -5,8 +5,15 @@
  * Date: 09/01/2018
  * Time: 10:53
  */
-//carrega o cabeçalho e menus do site
-include_once 'estrutura/header.php';
+//carrega o template
+include_once "estrutura/Template.php";
+
+$template = new Template();
+$template->header();
+$template->sidebar();
+$template->navbar();
+
+$logado = $_SESSION['login'];
 
 ?>
     <div class='content' xmlns="http://www.w3.org/1999/html">
@@ -29,5 +36,5 @@ include_once 'estrutura/header.php';
     </div>
 
 <?php
-include_once "estrutura/footer.php";
+$template->footer();
 ?>

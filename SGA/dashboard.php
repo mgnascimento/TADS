@@ -9,8 +9,13 @@
 //carrega a conexão com o banco
 require_once 'db/conexao.php';
 
-//carrega o cabeçalho e menus do site
-include_once 'estrutura/header.php';
+//carrega o template
+include_once 'estrutura/Template.php';
+
+$template = new Template();
+$template->header();
+$template->sidebar();
+$template->navbar();
 
 // Verificar se foi enviando dados via POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -75,5 +80,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 
 <?php
-include_once "estrutura/footer.php";
+$template->footer();
 ?>

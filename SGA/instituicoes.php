@@ -6,16 +6,19 @@
  * Time: 13:33
  */
 
-//carrega a conexão com o banco
-require_once 'db/conexao.php';
-
 //carrega o cabeçalho e menus do site
-include_once 'estrutura/header.php';
+include_once 'estrutura/Template.php';
 
 //Class
-include_once 'classes/instituicao.php';
+require_once 'db/instituicaoDAO.php';
 
-$object = new instituicao();
+$template = new Template();
+
+$template->header();
+$template->sidebar();
+$template->navbar();
+
+$object = new instituicaoDAO();
 
 // Verificar se foi enviando dados via POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -30,7 +33,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id != "") {
-    $resultado = $object->atualizar($id);
+
+    $instituicao = new instituicao(id, '','');
+
+    $resultado = $object->atualizar($instituicao);
     $nome = $resultado->getNome();
     $sigla = $resultado->getSigla();
 }
@@ -71,11 +77,13 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id != "") {
 
                                 <?php
                                 if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "save" && $nome != "") {
-                                    $object->salvar($id, $nome, $sigla);
+                                    $instituicao = new instituicao($id, $nome, $sigla);
+                                    $object->salvar($instituicao);
                                 }
 
                                 if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del" && $id != "") {
-                                    $object->remover($id);
+                                    $instituicao = new instituicao($id, '', '');
+                                    $object->remover($instituicao);
                                 }
 
                                 //chamada a paginação
@@ -90,5 +98,5 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id != "") {
             </div>
 
 <?php
-include_once "estrutura/footer.php";
+$template->footer();
 ?>
