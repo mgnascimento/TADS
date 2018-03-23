@@ -30,6 +30,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $matricula = NULL;
 }
 
+if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id != "") {
+
+    $aluno = new aluno($id, '', '');
+
+    $resultado = $object->atualizar($aluno);
+    $nome = $resultado->getNome();
+    $matricula = $resultado->getMatricula();
+}
+
+if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "save" && $nome != "" && $matricula != "") {
+    $aluno = new aluno($id, $matricula, $nome);
+    $msg = $object->salvar($aluno);
+    $id = null;
+    $nome = null;
+    $matricula = null;
+}
+
+if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del" && $id != "") {
+    $aluno = new aluno($id, '', '');
+    $msg = $object->remover($aluno);
+    $id = null;
+}
 
 ?>
 
@@ -45,40 +67,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                     <div class='content table-responsive'>
 
-                        <form action="?act=save&id=" method="POST" name="form1" >
+                        <form action="?act=save&id=" method="POST" name="form1">
                             <hr>
                             <i class="ti-save"></i>
                             <input type="hidden" name="id" value="<?php
                             // Preenche o id no campo id com um valor "value"
                             echo (isset($id) && ($id != null || $id != "")) ? $id : '';
-                            ?>" />
+                            ?>"/>
                             Nome:
                             <input type="text" size="50" name="nome" value="<?php
                             // Preenche o nome no campo nome com um valor "value"
                             echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
-                            ?>" />
+                            ?>"/>
                             Matricula:
                             <input type="text" size="25" name="matricula" value="<?php
                             // Preenche o sigla no campo sigla com um valor "value"
                             echo (isset($matricula) && ($matricula != null || $matricula != "")) ? $matricula : '';
-                            ?>" />
+                            ?>"/>
                             <input type="submit" VALUE="Cadastrar"/>
                             <hr>
                         </form>
 
 
-<?php
-if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "save" && $nome != "" && $matricula != "") {
-    $aluno = new aluno($id, $matricula, $nome);
-    $object->salvar($aluno);
+                        <?php
 
-    if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del" && $id != "") {
-        $aluno = new aluno($id, '', '');
-        $object->remover($aluno);
-    }
-}
+                        echo (isset($msg) && ($msg != null || $msg != "")) ? $msg : '';
 
-?>
+                        //chamada a paginação
+                        $object->tabelapaginada();
+
+                        ?>
                     </div>
                 </div>
             </div>

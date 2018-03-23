@@ -17,7 +17,7 @@ class instituicaoDAO
             $statement = $pdo->prepare("DELETE FROM Instituicao WHERE idInstituicao = :id");
             $statement->bindValue(":id", $instituicao->getidInstituicao());
             if ($statement->execute()) {
-                echo "Registo foi excluído com êxito";
+                return "Registo foi excluído com êxito";
                 $id = null;
                 $nome = null;
                 $cargo = null;
@@ -25,7 +25,7 @@ class instituicaoDAO
                 throw new PDOException("Erro: Não foi possível executar a declaração sql");
             }
         } catch (PDOException $erro) {
-            echo "Erro: ".$erro->getMessage();
+            return "Erro: ".$erro->getMessage();
         }
     }
 
@@ -44,18 +44,18 @@ class instituicaoDAO
 
             if ($statement->execute()) {
                 if ($statement->rowCount() > 0) {
-                    echo "Dados cadastrados com sucesso!";
+                    return "Dados cadastrados com sucesso!";
                     $id = null;
                     $nome = null;
                     $cargo = null;
                 } else {
-                    echo "Erro ao tentar efetivar cadastro";
+                    return "Erro ao tentar efetivar cadastro";
                 }
             } else {
                 throw new PDOException("Erro: Não foi possível executar a declaração sql");
             }
         } catch (PDOException $erro) {
-            echo "Erro: " . $erro->getMessage();
+            return "Erro: " . $erro->getMessage();
         }
     }
 
@@ -74,11 +74,12 @@ class instituicaoDAO
                 throw new PDOException("Erro: Não foi possível executar a declaração sql");
             }
         } catch (PDOException $erro) {
-            echo "Erro: ".$erro->getMessage();
+            return "Erro: ".$erro->getMessage();
         }
     }
 
-    public function tabelapaginada() {
+    public function tabelapaginada()
+    {
 
         //carrega o banco
         global $pdo;
@@ -94,7 +95,7 @@ class instituicaoDAO
         $pagina_atual = (isset($_GET['page']) && is_numeric($_GET['page'])) ? $_GET['page'] : 1;
 
         /* Calcula a linha inicial da consulta */
-        $linha_inicial = ($pagina_atual -1) * QTDE_REGISTROS;
+        $linha_inicial = ($pagina_atual - 1) * QTDE_REGISTROS;
 
         /* Instrução de consulta para paginação com MySQL */
         $sql = "SELECT idInstituicao, Nome, Sigla FROM Instituicao LIMIT {$linha_inicial}, " . QTDE_REGISTROS;
@@ -112,19 +113,19 @@ class instituicaoDAO
         $primeira_pagina = 1;
 
         /* Cálcula qual será a última página */
-        $ultima_pagina  = ceil($valor->total_registros / QTDE_REGISTROS);
+        $ultima_pagina = ceil($valor->total_registros / QTDE_REGISTROS);
 
         /* Cálcula qual será a página anterior em relação a página atual em exibição */
-        $pagina_anterior = ($pagina_atual > 1) ? $pagina_atual -1 : 0 ;
+        $pagina_anterior = ($pagina_atual > 1) ? $pagina_atual - 1 : 0;
 
         /* Cálcula qual será a pŕoxima página em relação a página atual em exibição */
-        $proxima_pagina = ($pagina_atual < $ultima_pagina) ? $pagina_atual +1 : 0 ;
+        $proxima_pagina = ($pagina_atual < $ultima_pagina) ? $pagina_atual + 1 : 0;
 
         /* Cálcula qual será a página inicial do nosso range */
-        $range_inicial  = (($pagina_atual - RANGE_PAGINAS) >= 1) ? $pagina_atual - RANGE_PAGINAS : 1 ;
+        $range_inicial = (($pagina_atual - RANGE_PAGINAS) >= 1) ? $pagina_atual - RANGE_PAGINAS : 1;
 
         /* Cálcula qual será a página final do nosso range */
-        $range_final   = (($pagina_atual + RANGE_PAGINAS) <= $ultima_pagina ) ? $pagina_atual + RANGE_PAGINAS : $ultima_pagina ;
+        $range_final = (($pagina_atual + RANGE_PAGINAS) <= $ultima_pagina) ? $pagina_atual + RANGE_PAGINAS : $ultima_pagina;
 
         /* Verifica se vai exibir o botão "Primeiro" e "Pŕoximo" */
         $exibir_botao_inicio = ($range_inicial < $pagina_atual) ? 'mostrar' : 'esconder';
@@ -144,7 +145,7 @@ class instituicaoDAO
        </tr>
      </thead>
      <tbody>";
-            foreach($dados as $inst):
+            foreach ($dados as $inst):
                 echo "<tr>
         <td>$inst->idInstituicao</td>
         <td>$inst->Nome</td>
@@ -153,7 +154,7 @@ class instituicaoDAO
         <td><a href='?act=del&id=$inst->idInstituicao'><i class='ti-close'></i></a></td>
        </tr>";
             endforeach;
-            echo"
+            echo "
 </tbody>
      </table>
 
@@ -163,8 +164,8 @@ class instituicaoDAO
 ";
 
             /* Loop para montar a páginação central com os números */
-            for ($i=$range_inicial; $i <= $range_final; $i++):
-                $destaque = ($i == $pagina_atual) ? 'destaque' : '' ;
+            for ($i = $range_inicial; $i <= $range_final; $i++):
+                $destaque = ($i == $pagina_atual) ? 'destaque' : '';
                 echo "<a class='box-numero $destaque' href='$endereco?page=$i'>$i</a>";
             endfor;
 

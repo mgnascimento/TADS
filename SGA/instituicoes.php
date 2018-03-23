@@ -6,10 +6,7 @@
  * Time: 13:33
  */
 
-//carrega o cabeçalho e menus do site
 include_once 'estrutura/Template.php';
-
-//Class
 require_once 'db/instituicaoDAO.php';
 
 $template = new Template();
@@ -34,68 +31,75 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "upd" && $id != "") {
 
-    $instituicao = new instituicao(id, '','');
+    $instituicao = new instituicao($id, '', '');
 
     $resultado = $object->atualizar($instituicao);
     $nome = $resultado->getNome();
     $sigla = $resultado->getSigla();
 }
 
+if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "save" && $nome != "") {
+    $instituicao = new instituicao($id, $nome, $sigla);
+    $msg = $object->salvar($instituicao);
+    $id = null;
+    $nome = null;
+    $sigla = null;
+}
+
+if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del" && $id != "") {
+    $instituicao = new instituicao($id, '', '');
+    $msg = $object->remover($instituicao);
+    $id = null;
+}
+
 ?>
     <div class='content' xmlns="http://www.w3.org/1999/html">
-            <div class='container-fluid'>
-                <div class='row'>
-                    <div class='col-md-12'>
-                        <div class='card'>
-                            <div class='header'>
-                                <h4 class='title'>Instituições</h4>
-                                <p class='category'>Lista de instituições do sistema</p>
+        <div class='container-fluid'>
+            <div class='row'>
+                <div class='col-md-12'>
+                    <div class='card'>
+                        <div class='header'>
+                            <h4 class='title'>Instituições</h4>
+                            <p class='category'>Lista de instituições do sistema</p>
 
-                            </div>
-                            <div class='content table-responsive'>
+                        </div>
+                        <div class='content table-responsive'>
 
-                                <form action="?act=save" method="POST" name="form1" >
-                                    <hr>
-                                    <i class="ti-save"></i>
-                                    <input type="hidden" name="id" value="<?php
-                                    // Preenche o id no campo id com um valor "value"
-                                    echo (isset($id) && ($id != null || $id != "")) ? $id : '';
-                                    ?>" />
-                                    Nome:
-                                    <input type="text" size="50" name="nome" value="<?php
-                                    // Preenche o nome no campo nome com um valor "value"
-                                    echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
-                                   ?>" />
-                                    Sigla:
-                                    <input type="text" size="25" name="sigla" value="<?php
-                                    // Preenche o sigla no campo sigla com um valor "value"
-                                    echo (isset($sigla) && ($sigla != null || $sigla != "")) ? $sigla : '';
-                                    ?>" />
-                                     <input type="submit" VALUE="Cadastrar"/>
-                                    <hr>
-                                </form>
+                            <form action="?act=save" method="POST" id="form1">
+                                <hr>
+                                <i class="ti-save"></i>
+                                <input type="hidden" name="id" value="<?php
+                                // Preenche o id no campo id com um valor "value"
+                                echo (isset($id) && ($id != null || $id != "")) ? $id : '';
+                                ?>"/>
+                                Nome:
+                                <input type="text" size="50" name="nome" value="<?php
+                                // Preenche o nome no campo nome com um valor "value"
+                                echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
+                                ?>"/>
+                                Sigla:
+                                <input type="text" size="25" name="sigla" value="<?php
+                                // Preenche o sigla no campo sigla com um valor "value"
+                                echo (isset($sigla) && ($sigla != null || $sigla != "")) ? $sigla : '';
+                                ?>"/>
+                                <input type="submit" VALUE="Cadastrar"/>
+                                <hr>
+                            </form>
 
-                                <?php
-                                if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "save" && $nome != "") {
-                                    $instituicao = new instituicao($id, $nome, $sigla);
-                                    $object->salvar($instituicao);
-                                }
+                            <?php
 
-                                if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del" && $id != "") {
-                                    $instituicao = new instituicao($id, '', '');
-                                    $object->remover($instituicao);
-                                }
+                            echo (isset($msg) && ($msg != null || $msg != "")) ? $msg : '';
 
-                                //chamada a paginação
-                                $object->tabelapaginada();
+                            //chamada a paginação
+                            $object->tabelapaginada();
 
-                                ?>
-                                </div>
-                            </div>
+                            ?>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
 <?php
 $template->footer();

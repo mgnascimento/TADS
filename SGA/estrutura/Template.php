@@ -80,7 +80,8 @@ class Template
     }
 
 
-    function sidebar(){
+    function sidebar()
+    {
         echo "
 <div class='wrapper'>
 	<div class='sidebar' data-background-color='white' data-active-color='danger'>
@@ -151,7 +152,8 @@ Tip 1: you can change the color of the sidebar's background using: data-backgrou
 ";
     }
 
-    function navbar(){
+    function navbar()
+    {
         echo "
 <div class='main-panel'>
 		<nav class='navbar navbar-default'>
