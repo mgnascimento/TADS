@@ -145,6 +145,12 @@ Tip 1: you can change the color of the sidebar's background using: data-backgrou
                         <p>Avaliação</p>
                     </a>
                 </li>
+                <li>
+                    <a href='usuarios.php'>
+                        <i class='ti-user'></i>
+                        <p>Usuários</p>
+                    </a>
+                </li>
             </ul>
     	</div>
     </div>

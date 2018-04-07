@@ -13,7 +13,7 @@ $template->header();
 $template->sidebar();
 $template->navbar();
 
-$logado = $_SESSION['login'];
+$logado = $_SESSION["login"];
 
 ?>
     <div class='content' xmlns="http://www.w3.org/1999/html">

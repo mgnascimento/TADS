@@ -80,7 +80,7 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del" && $id != "") {
                             echo (isset($nome) && ($nome != null || $nome != "")) ? $nome : '';
                             ?>"/>
                             Matricula:
-                            <input type="text" size="25" name="matricula" value="<?php
+                            <input type="numer" size="7" name="matricula" value="<?php
                             // Preenche o sigla no campo sigla com um valor "value"
                             echo (isset($matricula) && ($matricula != null || $matricula != "")) ? $matricula : '';
                             ?>"/>
