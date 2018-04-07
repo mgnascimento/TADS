@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="052c6688-355c-4503-83b3-ffea8903d21e" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/classes/curso.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/classes/disciplina.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/classes/turma.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cursos.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/cursoDAO.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/disciplinaDAO.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db/turmaDAO.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/disciplinas.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/recEmail.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/recuperar.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/turmas.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alunos.php" beforeDir="false" afterPath="$PROJECT_DIR$/alunos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/DB.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/DB.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/estrutura/Template.php" beforeDir="false" afterPath="$PROJECT_DIR$/estrutura/Template.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/professores.php" beforeDir="false" afterPath="$PROJECT_DIR$/professores.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,14 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="disciplinaDAO.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/db/disciplinaDAO.php">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="419">
-              <caret line="146" selection-start-line="146" selection-end-line="146" />
-              <folding>
-                <element signature="e#6#89#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="135">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
@@ -74,7 +55,6 @@
         <option value="$PROJECT_DIR$/db/alunoDAO.php" />
         <option value="$PROJECT_DIR$/estrutura/Template.php" />
         <option value="$PROJECT_DIR$/professores.php" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/db/turmaDAO.php" />
         <option value="$PROJECT_DIR$/alunos.php" />
         <option value="$PROJECT_DIR$/classes/disciplina.php" />
@@ -83,6 +63,7 @@
         <option value="$PROJECT_DIR$/cursos.php" />
         <option value="$PROJECT_DIR$/db/cursoDAO.php" />
         <option value="$PROJECT_DIR$/db/disciplinaDAO.php" />
+        <option value="$PROJECT_DIR$/index.php" />
       </list>
     </option>
   </component>
@@ -114,16 +95,6 @@
             <path>
               <item name="SGA" type="b2602c69:ProjectViewProjectNode" />
               <item name="SGA" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="SGA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SGA" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="classes" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="SGA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SGA" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="db" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -182,12 +153,12 @@
       <workItem from="1522150233443" duration="22000" />
       <workItem from="1522249447294" duration="37000" />
       <workItem from="1522947532366" duration="1452000" />
-      <workItem from="1523104596058" duration="6547000" />
+      <workItem from="1523104596058" duration="6677000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33870000" />
+    <option name="totallyTimeSpent" value="34000000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -360,13 +331,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="15" column="26" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/instituicaoDAO.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -474,6 +438,13 @@
           <folding>
             <element signature="e#6#89#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
