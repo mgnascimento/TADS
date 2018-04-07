@@ -19,7 +19,7 @@ class aluno
      * @param $matricula
      * @param $nome
      */
-    public function __construct($idAluno, $matricula, $nome)
+    public function __construct($idAluno, $nome, $matricula)
     {
         $this->idAluno = $idAluno;
         $this->matricula = $matricula;
