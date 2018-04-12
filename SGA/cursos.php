@@ -91,7 +91,6 @@ if (isset($_REQUEST["act"]) && $_REQUEST["act"] == "del" && $id != "") {
                                 <select name="instituicao"><?php
                                     $query = "SELECT * FROM Instituicao order by Nome;";
                                     $statement = $pdo->prepare($query);
-                                    $statement->execute();
                                     if ($statement->execute()) {
                                         $result = $statement->fetchAll(PDO::FETCH_OBJ);
                                         foreach ($result as $rs) {
